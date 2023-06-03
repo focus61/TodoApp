@@ -13,6 +13,9 @@ final class DetailTask: ObservableObject {
     @Published var importantIndex: Int
     @Published var isDeadlineOn: Bool
     @Published var selectedDateInCalendar: Date
+    var taskUUID: String {
+        return model.id
+    }
     private let dateFormatter = DateFormatter()
     private let fileCache: FileCache
     private func saveToFileCache() {
@@ -23,6 +26,7 @@ final class DetailTask: ObservableObject {
     }
     func deleteTask(by uuid: String) {
         fileCache.deleteTask(by: uuid)
+        saveToFileCache()
     }
     func saveTask() {
         fileCache.addTask(model)

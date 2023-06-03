@@ -75,6 +75,16 @@ struct TaskDetailView: View {
                             .padding()
                         }
                     }
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .frame(height: 50)
+                            .foregroundColor(.white)
+                        Button {
+                            viewModel.deleteTask(by: viewModel.taskUUID)
+                        } label: {
+                            Text("Delete").foregroundColor(.red)
+                        }
+                    }
                 }
                 .padding()
             }

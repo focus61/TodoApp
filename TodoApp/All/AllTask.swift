@@ -15,6 +15,7 @@ protocol Task {
 
 final class AllTask: ObservableObject, Task {
     static let notificationName: String = "notificationName"
+    private let dateFormatter = DateFormatter()
     let fileCache = FileCache()
     @Published private(set) var allItems: AllItems
     var isLoad: Bool {
@@ -41,5 +42,12 @@ final class AllTask: ObservableObject, Task {
     }
     func saveTask(_ item: TodoTask) {
         fileCache.addTask(item)
+    }
+    func dateToString(_ date: Date?) -> String? {
+        if let date {
+            dateFormatter.dateFormat = "d MMMM yyyy"
+            return dateFormatter.string(from: date)
+        }
+        return nil
     }
 }

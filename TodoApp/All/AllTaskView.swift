@@ -29,7 +29,8 @@ struct AllTaskView: View {
                                     taskText: task.text,
                                     isDone: task.isDone,
                                     isOverdueDeadline: task.isDone,
-                                    importantRow: task.important.rawValue
+                                    importantRow: task.important.rawValue,
+                                    deadlineTimeDescription: allTaskViewModel.dateToString(task.deadline)
                                 )
                             }
                             .swipeActions(edge: .leading) {
@@ -94,7 +95,7 @@ struct AllTaskView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let allTasks = AllTask(items: AllItems(tasks: [TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil), TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil), TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil), TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil)], isLoad: true))
+        let allTasks = AllTask(items: AllItems(tasks: [TodoTask(text: "asd", deadline: Date(), isDone: true, dateСreation: Date(), dateChange: nil), TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil), TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil), TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil)], isLoad: true))
         AllTaskView(allTaskViewModel: allTasks)
     }
 }

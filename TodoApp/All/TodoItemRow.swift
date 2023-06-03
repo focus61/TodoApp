@@ -13,6 +13,7 @@ struct AllTaskRow: View {
     var isOverdueDeadline: Bool
     ///unimportant = 0, normal = 1, important = 2
     var importantRow: Int
+    var deadlineTimeDescription: String?
     var body: some View {
         HStack {
             let button = Button {
@@ -46,10 +47,19 @@ struct AllTaskRow: View {
                 } else if importantRow == 2 {
                     Image(systemName: "exclamationmark.2")
                 }
-                Text(taskText)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(3, reservesSpace: false)
-                Spacer()
+                VStack(alignment: .leading) {
+                    Text(taskText)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(3, reservesSpace: false)
+                    if let deadlineTimeDescription {
+                        HStack {
+                            Image(systemName: "calendar")
+                            Text(deadlineTimeDescription)
+                        }
+                        .foregroundColor(.gray)
+                        .font(.subheadline)
+                    }
+                }
             }
         }
         .alignmentGuide(.listRowSeparatorLeading) { viewDimensions in
@@ -60,6 +70,6 @@ struct AllTaskRow: View {
 
 struct TodoItemRow_Previews: PreviewProvider {
     static var previews: some View {
-        AllTaskRow(taskText: "Текст", isDone: false, isOverdueDeadline: false, importantRow: 2)
+        AllTaskRow(taskText: "Текст", isDone: false, isOverdueDeadline: false, importantRow: 2, deadlineTimeDescription: "123 ekoaf")
     }
 }
