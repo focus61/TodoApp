@@ -1,12 +1,4 @@
-//
-//  AllTask.swift
-//  TodoApp
-//
-//  Created by Aleksandr on 01.06.2023.
-//
-
 import Foundation
-import Combine
 
 protocol Task {
     func deleteTask(by uuid: String)
@@ -14,7 +6,6 @@ protocol Task {
 }
 
 final class AllTask: ObservableObject, Task {
-    static let notificationName: String = "notificationName"
     private let dateFormatter = DateFormatter()
     let fileCache = FileCache()
     @Published private(set) var allItems: AllItems
@@ -23,13 +14,6 @@ final class AllTask: ObservableObject, Task {
     }
     init(items: AllItems = AllItems(tasks: [], isLoad: false)) {
         allItems = items
-        NotificationCenter.default.addObserver(self, selector: #selector(updateAllTask), name: Notification.Name(AllTask.notificationName), object: nil)
-    }
-    @objc private func updateAllTask() {
-        self.fileCache.loadFromFile { newItems in self.allItems.loadTasks(tasks: newItems) }
-    }
-    deinit {
-        NotificationCenter.default.removeObserver(Notification(name: Notification.Name(AllTask.notificationName)))
     }
     func loadFromFileCache() {
         fileCache.loadFromFile { newItems in self.allItems.loadTasks(tasks: newItems) }
@@ -39,6 +23,10 @@ final class AllTask: ObservableObject, Task {
         fileCache.saveToFile { isSuccess in
             self.fileCache.loadFromFile { newItems in self.allItems.loadTasks(tasks: newItems) }
         }
+    }
+    func changeImportant(for taskID: String, important: Int) {
+        let index = allItems.tasks.firstIndex(where: { $0.id == taskID }) ?? 0
+        allItems.tasks[index].changeImportant(important: important)
     }
     func saveTask(_ item: TodoTask) {
         fileCache.addTask(item)
@@ -51,3 +39,4 @@ final class AllTask: ObservableObject, Task {
         return nil
     }
 }
+

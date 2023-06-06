@@ -21,7 +21,6 @@ final class DetailTask: ObservableObject {
     private func saveToFileCache() {
         fileCache.saveToFile { isSuccess in
             if !isSuccess { fatalError("saveToFile") }
-            NotificationCenter.default.post(Notification(name: Notification.Name(AllTask.notificationName)))
         }
     }
     func deleteTask(by uuid: String) {

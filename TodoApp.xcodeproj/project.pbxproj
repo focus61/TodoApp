@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F22B2112A2FC18900E3990A /* AllTaskList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F22B2102A2FC18900E3990A /* AllTaskList.swift */; };
+		1F22B2132A2FCBA000E3990A /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F22B2122A2FCBA000E3990A /* ActivityViewController.swift */; };
 		1FE2184D2A27D1FF0059D8AB /* TodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2184C2A27D1FF0059D8AB /* TodoApp.swift */; };
 		1FE2184F2A27D1FF0059D8AB /* AllTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2184E2A27D1FF0059D8AB /* AllTaskView.swift */; };
 		1FE218512A27D2010059D8AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FE218502A27D2010059D8AB /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F22B2102A2FC18900E3990A /* AllTaskList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTaskList.swift; sourceTree = "<group>"; };
+		1F22B2122A2FCBA000E3990A /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		1FE218492A27D1FF0059D8AB /* TodoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE2184C2A27D1FF0059D8AB /* TodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoApp.swift; sourceTree = "<group>"; };
 		1FE2184E2A27D1FF0059D8AB /* AllTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTaskView.swift; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 				1FE218502A27D2010059D8AB /* Assets.xcassets */,
 				1FE218522A27D2010059D8AB /* Preview Content */,
 				1FE2185C2A27DA630059D8AB /* FileCache.swift */,
+				1F22B2122A2FCBA000E3990A /* ActivityViewController.swift */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -100,6 +105,7 @@
 				1FE2184E2A27D1FF0059D8AB /* AllTaskView.swift */,
 				1FE2185E2A27E1340059D8AB /* TodoItemRow.swift */,
 				1FE2186E2A2A31950059D8AB /* AllItems.swift */,
+				1F22B2102A2FC18900E3990A /* AllTaskList.swift */,
 			);
 			path = All;
 			sourceTree = "<group>";
@@ -176,12 +182,14 @@
 			files = (
 				1FE218662A28D56A0059D8AB /* DetailTask.swift in Sources */,
 				1FE2186F2A2A31950059D8AB /* AllItems.swift in Sources */,
+				1F22B2112A2FC18900E3990A /* AllTaskList.swift in Sources */,
 				1FE2184F2A27D1FF0059D8AB /* AllTaskView.swift in Sources */,
 				1FE2185F2A27E1340059D8AB /* TodoItemRow.swift in Sources */,
 				1FE218622A28A3DB0059D8AB /* TaskDetailView.swift in Sources */,
 				1FE218682A28DD990059D8AB /* AllTask.swift in Sources */,
 				1FE2185B2A27D2190059D8AB /* TodoTask.swift in Sources */,
 				1FE2185D2A27DA630059D8AB /* FileCache.swift in Sources */,
+				1F22B2132A2FCBA000E3990A /* ActivityViewController.swift in Sources */,
 				1FE2184D2A27D1FF0059D8AB /* TodoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

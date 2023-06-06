@@ -28,6 +28,9 @@ struct TodoTask: Identifiable {
     enum Important: Int {
         case unimportant, normal, important
     }
+    mutating func changeImportant(important: Int) {
+        self.important = Important(rawValue: important) ?? .normal
+    }
     mutating func changeTask(
         text: String,
         important: Int,

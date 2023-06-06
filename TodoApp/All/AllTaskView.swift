@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  TodoApp
-//
-//  Created by Aleksandr on 31.05.2023.
-//
-
 import SwiftUI
 //TODO: - Краткая информация по свайпу, isDone по свайпу, при лонг тапе на ячейку показывать краткое меню
 struct AllTaskView: View {
@@ -16,51 +9,7 @@ struct AllTaskView: View {
         NavigationView {
             ZStack {
                 color.ignoresSafeArea()
-                if allTaskViewModel.isLoad {
-                    if allTaskViewModel.allItems.tasks.isEmpty {
-                        Text("No tasks").foregroundColor(.gray).font(.largeTitle)
-                    } else {
-                        List(allTaskViewModel.allItems.tasks) { task in
-                            NavigationLink {
-                                let detailTask = DetailTask(model: task, fileCache: allTaskViewModel.fileCache)
-                                TaskDetailView(viewModel: detailTask)
-                            } label: {
-                                AllTaskRow(
-                                    taskText: task.text,
-                                    isDone: task.isDone,
-                                    isOverdueDeadline: task.isDone,
-                                    importantRow: task.important.rawValue,
-                                    deadlineTimeDescription: allTaskViewModel.dateToString(task.deadline)
-                                )
-                            }
-                            .swipeActions(edge: .leading) {
-                                Button {
-                                    
-                                } label: {
-                                    Image(systemName: "checkmark.circle.fill")
-                                }
-                            }.tint(.green)
-                            .swipeActions(edge: .trailing) {
-                                    Button {
-                                        allTaskViewModel.deleteTask(by: task.id)
-                                    } label: {
-                                        Image(systemName: "trash")
-                                    }
-                            }
-                            .tint(.red)
-                            .swipeActions(edge: .trailing) {
-                                    Button {
-                                        
-                                    } label: {
-                                        Image(systemName: "info.circle.fill")
-                                    }
-                            }
-                            .tint(.gray)
-                        }
-                    }
-                } else {
-                    ProgressView().tint(.blue)
-                }
+                AllTaskList(allTaskViewModel: allTaskViewModel)
                 VStack {
                     Spacer()
                     HStack {
@@ -95,7 +44,7 @@ struct AllTaskView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let allTasks = AllTask(items: AllItems(tasks: [TodoTask(text: "asd", deadline: Date(), isDone: true, dateСreation: Date(), dateChange: nil), TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil), TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil), TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil)], isLoad: true))
+        let allTasks = AllTask(items: AllItems(tasks: [TodoTask(text: "asd", deadline: Date(), isDone: false, dateСreation: Date(), dateChange: nil), TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil), TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil), TodoTask(text: "asd", deadline: nil, isDone: true, dateСreation: Date(), dateChange: nil)], isLoad: true))
         AllTaskView(allTaskViewModel: allTasks)
     }
 }
